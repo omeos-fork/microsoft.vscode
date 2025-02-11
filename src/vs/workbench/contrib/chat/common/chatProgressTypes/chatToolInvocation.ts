@@ -6,7 +6,7 @@
 import { DeferredPromise } from '../../../../../base/common/async.js';
 import { IMarkdownString } from '../../../../../base/common/htmlContent.js';
 import { IChatToolInvocation, IChatToolInvocationSerialized } from '../chatService.js';
-import { IToolConfirmationMessages } from '../languageModelToolsService.js';
+import { IToolConfirmationMessages, IToolInvocation } from '../languageModelToolsService.js';
 
 export class ChatToolInvocation implements IChatToolInvocation {
 	public readonly kind: 'toolInvocation' = 'toolInvocation';
@@ -37,6 +37,7 @@ export class ChatToolInvocation implements IChatToolInvocation {
 	}
 
 	constructor(
+		public readonly toolInvocation: IToolInvocation,
 		public readonly invocationMessage: string | IMarkdownString,
 		public readonly pastTenseMessage: string | IMarkdownString | undefined,
 		public readonly tooltip: string | IMarkdownString | undefined,
@@ -63,6 +64,7 @@ export class ChatToolInvocation implements IChatToolInvocation {
 
 	public toJSON(): IChatToolInvocationSerialized {
 		return {
+			toolInvocation: this.toolInvocation,
 			kind: 'toolInvocationSerialized',
 			invocationMessage: this.invocationMessage,
 			pastTenseMessage: this.pastTenseMessage,

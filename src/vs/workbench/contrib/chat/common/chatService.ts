@@ -20,7 +20,7 @@ import { ChatModel, IChatModel, IChatRequestModel, IChatRequestVariableData, ICh
 import { IParsedChatRequest } from './chatParserTypes.js';
 import { IChatParserContext } from './chatRequestParser.js';
 import { IChatRequestVariableValue } from './chatVariables.js';
-import { IToolConfirmationMessages } from './languageModelToolsService.js';
+import { IToolConfirmationMessages, IToolInvocation } from './languageModelToolsService.js';
 
 export interface IChatRequest {
 	message: string;
@@ -191,6 +191,7 @@ export interface IChatConfirmation {
 }
 
 export interface IChatToolInvocation {
+	toolInvocation: IToolInvocation;
 	/** Presence of this property says that confirmation is required */
 	confirmationMessages?: IToolConfirmationMessages;
 	confirmed: DeferredPromise<boolean>;
@@ -209,6 +210,7 @@ export interface IChatToolInvocation {
  * This is a IChatToolInvocation that has been serialized, like after window reload, so it is no longer an active tool invocation.
  */
 export interface IChatToolInvocationSerialized {
+	toolInvocation: IToolInvocation;
 	invocationMessage: string | IMarkdownString;
 	pastTenseMessage: string | IMarkdownString | undefined;
 	tooltip: string | IMarkdownString | undefined;
