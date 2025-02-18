@@ -6,6 +6,13 @@
 import { IConfigurationService } from '../../configuration/common/configuration.js';
 
 /**
+ * TODO: @legomushroom
+ *  - update doc comment for config.ts
+ *  - move unit tests for config.ts
+ *  - add unit tests for config.ts
+ */
+
+/**
  * `!Note!` This doc comment is deprecated and is set to be updated during `debt` week.
  *         The configuration value can now be one of `{ '/path/to/folder': boolean }` or 'null' types.
  *         This comment is tracked by [#13119](https://github.com/microsoft/vscode-copilot/issues/13119).
